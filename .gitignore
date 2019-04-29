@@ -1,0 +1,9 @@
+build
+composer.lock
+vendor
+tests/temp
+.idea
+.docker
+docker-compose.yml
+Dockerfile
+.phpunit.result.cache

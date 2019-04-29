@@ -1,0 +1,23 @@
+{
+    "name": "bureaupartners/pdfgrep",
+    "description": "Composer PHP handler for pdfgrep",
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    },
+    "license": "MIT",
+    "authors": [{
+        "name": "Mark Hameetman",
+        "email": "mark@bureau.partners"
+    }],
+    "autoload": {
+        "psr-4": {
+            "BureauPartners\\pdfgrep\\": "src/BureauPartners/pdfgrep"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit tests"
+    }
+}
