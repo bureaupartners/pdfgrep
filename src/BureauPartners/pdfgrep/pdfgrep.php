@@ -4,7 +4,7 @@ namespace BureauPartners\pdfgrep;
 
 class pdfgrep
 {
-    protected $command = 'pdfgrep -n';
+    protected $command = 'pdfgrep -n -P';
     protected $filename = null;
     protected $matches = [];
 
@@ -15,15 +15,20 @@ class pdfgrep
         return $this->execute($pattern);
     }
 
-    private function processOutput($output)
+    private function processOutput($output, $pattern)
     {
         foreach ($output as $match) {
             //list($pageno, $sentence) =
             $data = preg_match('/^([0-9]*):(.*)/s', $match, $matches);
-            $this->matches[] = [
-                'page' => $matches[1],
-                'sentence' => $matches[2],
-            ];
+            // because pdfgrep returns complete sentence, extract match
+            $exact_match = preg_match('/'.$pattern.'/s', $matches[2], $exact_matches);
+            if (count($matches) > 0) {
+                $this->matches[] = [
+                    'page' => $matches[1],
+                    'sentence' => $matches[2],
+                    'exact_match' => reset($exact_matches),
+                ];
+            }
         }
     }
 
@@ -33,7 +38,7 @@ class pdfgrep
         switch ($exit_code) {
             case 0:
                 // matches found
-                $this->processOutput($output);
+                $this->processOutput($output, $pattern);
 
                 return true;
                 break;
@@ -50,6 +55,11 @@ class pdfgrep
     public function getMatches()
     {
         return $this->matches;
+    }
+
+    public function getFirstMatch()
+    {
+        return reset($this->matches);
     }
 
     public function getPageNumbers()
