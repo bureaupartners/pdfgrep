@@ -1,4 +1,11 @@
 <?php
+/*
+ * @author Mark Hameetman (BureauPartners B.V.) <mark@bureau.partners>
+ * @link https://github.com/bureaupartners/pdfgrep
+ * @license MIT
+ *
+ * @copyright Copyright (c) 2019, GRIVOS Holding B.V.
+*/
 
 namespace BureauPartners\pdfgrep;
 

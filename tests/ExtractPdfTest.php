@@ -1,4 +1,11 @@
 <?php
+/*
+ * @author Mark Hameetman (BureauPartners B.V.) <mark@bureau.partners>
+ * @link https://github.com/bureaupartners/pdfgrep
+ * @license MIT
+ *
+ * @copyright Copyright (c) 2019, GRIVOS Holding B.V.
+ */
 
 declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
