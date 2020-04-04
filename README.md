@@ -1,4 +1,5 @@
 # pdfgrep
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bureaupartners/pdfgrep/run-tests?label=Tests)
 
 A simple package for reading information via full text search with pdfgrep and using the information in a PHP script.
 
