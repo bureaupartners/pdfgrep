@@ -5,15 +5,15 @@
  * @license MIT
  *
  * @copyright Copyright (c) 2019, GRIVOS Holding B.V.
-*/
+ */
 
 namespace BureauPartners\pdfgrep;
 
 class pdfgrep
 {
-    protected $command = 'pdfgrep -n -P';
+    protected $command  = 'pdfgrep -n -P';
     protected $filename = null;
-    protected $matches = [];
+    protected $matches  = [];
 
     public function __construct($filename, $pattern)
     {
@@ -28,11 +28,11 @@ class pdfgrep
             //list($pageno, $sentence) =
             $data = preg_match('/^([0-9]*):(.*)/s', $match, $matches);
             // because pdfgrep returns complete sentence, extract match
-            $exact_match = preg_match('/'.$pattern.'/s', $matches[2], $exact_matches);
+            $exact_match = preg_match('/' . $pattern . '/s', $matches[2], $exact_matches);
             if (count($matches) > 0) {
                 $this->matches[] = [
-                    'page' => $matches[1],
-                    'sentence' => $matches[2],
+                    'page'        => $matches[1],
+                    'sentence'    => $matches[2],
                     'exact_match' => reset($exact_matches),
                 ];
             }
@@ -41,7 +41,7 @@ class pdfgrep
 
     private function execute($pattern, $options = null)
     {
-        exec($this->command.' '.$options.' "'.$pattern.'" '.$this->filename, $output, $exit_code);
+        exec($this->command . ' ' . $options . ' "' . $pattern . '" ' . $this->filename, $output, $exit_code);
         switch ($exit_code) {
             case 0:
                 // matches found

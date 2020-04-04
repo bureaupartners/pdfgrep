@@ -15,13 +15,16 @@ final class ExtractPdfTest extends TestCase
 {
     public function testCanExtractWord()
     {
-        $pdfgrep = new pdfgrep(dirname(__FILE__) . '/pdf/Document.pdf', 'id');
-        $this->assertCount(7, $pdfgrep->getMatches());
+        $pdfgrep = new pdfgrep(dirname(__FILE__) . '/pdf/Document.pdf', 'ipsum');
+        $this->assertCount(29, $pdfgrep->getMatches());
+        print_r($pdfgrep->getMatches());
     }
 
     public function testCanGetPageNumbers()
     {
-        $pdfgrep = new pdfgrep(dirname(__FILE__) . '/pdf/Document.pdf', 'id');
-        $this->assertCount(1, $pdfgrep->getPageNumbers());
+        $pdfgrep = new pdfgrep(dirname(__FILE__) . '/pdf/Document.pdf', 'Lorem ipsum dolor');
+        $this->assertCount(2, $pdfgrep->getPageNumbers());
+        $this->assertContains(1, $pdfgrep->getPageNumbers());
+        $this->assertContains(3, $pdfgrep->getPageNumbers());
     }
 }
