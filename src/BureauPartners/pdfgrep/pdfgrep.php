@@ -41,7 +41,7 @@ class pdfgrep
 
     private function execute($pattern, $options = null)
     {
-        exec($this->command . ' ' . $options . ' "' . $pattern . '" ' . $this->filename, $output, $exit_code);
+        exec($this->command ' --cache ' . ' ' . $options . ' "' . $pattern . '" ' . $this->filename, $output, $exit_code);
         switch ($exit_code) {
             case 0:
                 // matches found
